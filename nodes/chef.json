@@ -1,0 +1,8 @@
+{
+  "run_list": [
+    "recipe[develop_tools_cookbook]",
+    "recipe[php7_cookbook]",
+    "recipe[apache_cookbook]",
+    "recipe[mysql_cookbook]"
+  ]
+}

@@ -48,3 +48,10 @@ bash 'install_composer' do
     mv /tmp/composer.phar /usr/local/bin/composer
   EOH
 end
+
+cookbook_file "/etc/php.ini" do
+  source "php.ini"
+  mode 00644
+  owner 'root'
+  group 'root'
+end

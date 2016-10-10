@@ -18,34 +18,34 @@ To build a following of the environment.
 
   first_install_script = <<SCRIPT
     # TimeZone : UTC -> JST
-    sudo timedatectl set-timezone Asia/Tokyo
+    timedatectl set-timezone Asia/Tokyo
 
     # install rvm, ruby2.3
-    sudo gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
     curl -L https://get.rvm.io | sudo bash -s stable
-    sudo gpasswd -a vagrant rvm
+    gpasswd -a vagrant rvm
 SCRIPT
 
   second_install_script = <<SCRIPT
-    rvm install 2.3 --default
+    sudo -i -u vagrant rvm install 2.3 --default
 SCRIPT
 
   third_install_script = <<SCRIPT
     # gem install for chef
-    gem install bundler
-    gem install chef
-    gem install knife-solo
+    sudo -i -u vagrant gem install bundler
+    sudo -i -u vagrant gem install chef
+    sudo -i -u vagrant gem install knife-solo
 SCRIPT
 
   fourth_install_script = <<SCRIPT
     # install git for to download cookbook repository
-    sudo yum -y update
-    sudo yum -y install git
+    yum -y update
+    yum -y install git
 
-    git clone https://github.com/eidera/chef-php-env.git
+    sudo -u vagrant git clone https://github.com/eidera/chef-php-env.git
 
     # execute chef
-    cd chef-php-env && rvmsudo_secure_path=1 /usr/local/rvm/bin/rvmsudo chef-client --local-mode -j nodes/chef.json -c chef.rb
+    cd /home/vagrant/chef-php-env && rvmsudo_secure_path=1 /usr/local/rvm/bin/rvmsudo chef-client --local-mode -j nodes/chef.json -c chef.rb
 SCRIPT
 
   config.vm.provision :shell, :inline => first_install_script

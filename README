@@ -4,11 +4,18 @@ To build a following of the environment.
 * Apache
 * MySQL5.7
 
+# Usage
+
+    chef-client --local-mode -j nodes/chef.json -c chef.rb
+
+
+If you use rvm, you enter this command.
+
+    rvmsudo_secure_path=1 rvmsudo chef-client --local-mode -j nodes/chef.json -c chef.rb
 
 # Sample Vagrantfile
 
-```
-% vi Vagrantfile
+``` ruby:Vagrantfile
   # config.vm.network :private_network, ip: "192.168.33.10"
   config.vm.network :private_network, ip: "192.168.33.10"
 

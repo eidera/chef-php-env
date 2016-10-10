@@ -6,16 +6,19 @@ To build a following of the environment.
 
 # Usage
 
-    chef-client --local-mode -j nodes/chef.json -c chef.rb
+    % chef-client --local-mode -j nodes/chef.json -c chef.rb
 
 
 If you use rvm, you enter this command.
 
-    rvmsudo_secure_path=1 rvmsudo chef-client --local-mode -j nodes/chef.json -c chef.rb
+    % rvmsudo_secure_path=1 rvmsudo chef-client --local-mode -j nodes/chef.json -c chef.rb
 
 # Sample Vagrantfile
 
-``` ruby:Vagrantfile
+If you use vagrant, this is a sample of Vagrantfile.
+
+```
+  % vi Vagrantfile
   # config.vm.network :private_network, ip: "192.168.33.10"
   config.vm.network :private_network, ip: "192.168.33.10"
 
